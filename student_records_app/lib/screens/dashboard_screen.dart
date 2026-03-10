@@ -3,6 +3,7 @@ import '../services/firebase_service.dart';
 import '../models/student.dart';
 import 'add_student_screen.dart';
 import 'edit_student_screen.dart';
+import 'student_detail_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -40,6 +41,14 @@ class DashboardScreen extends StatelessWidget {
                   leading: const CircleAvatar(child: Icon(Icons.person)),
                   title: Text(student.name),
                   subtitle: Text('${student.studentId} • ${student.course}'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => StudentDetailScreen(student: student),
+                      ),
+                    );
+                  },
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
